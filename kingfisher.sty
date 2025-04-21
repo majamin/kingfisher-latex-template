@@ -1,0 +1,103 @@
+% mystyle.sty
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{kingfisher}[2025/04/08 Custom Style for Everything?]
+
+% Font
+\RequirePackage{unicode-math}
+\RequirePackage{fontspec}
+\setmainfont{TeX Gyre Pagella}
+\setmathfont{TeX Gyre Pagella Math}
+
+% Set paper and margins
+\RequirePackage[letterpaper, margin=1in]{geometry}
+
+\RequirePackage{xcolor}
+\RequirePackage{geometry}
+\RequirePackage{fancyhdr}
+\RequirePackage[many,minted]{tcolorbox}
+
+% Accent color
+\definecolor{myblue}{HTML}{1B325F}
+\definecolor{mybluelight}{HTML}{E9F2F9}
+
+% Improved typography
+\RequirePackage{microtype}
+\RequirePackage{xcolor}
+
+% Page setup
+\geometry{margin=1in}
+\pagestyle{fancy}
+\fancyhf{}
+
+\RequirePackage{setspace}
+\setstretch{1.1}
+
+% Store custom title, author, date
+\newcommand{\mytitle}{}
+\newcommand{\myauthor}{}
+\newcommand{\mydate}{\today}
+
+\newcommand{\settitle}[1]{\renewcommand{\mytitle}{\parbox{\textwidth}{#1}}}
+\newcommand{\setauthor}[1]{\renewcommand{\myauthor}{#1}}
+\newcommand{\setdate}[1]{\renewcommand{\mydate}{#1}}
+
+% Header
+\renewcommand{\headrulewidth}{2pt}
+\renewcommand{\headrule}{\hbox to\headwidth{%
+		\color{myblue}\leaders\hrule height \headrulewidth\hfill}}
+\fancyhead[L]{\textcolor{myblue}{\textbf{\mytitle}}}
+\fancyhead[C]{\textcolor{myblue}{\myauthor}}
+\fancyhead[R]{\textcolor{myblue}{\mydate}}
+
+% Footer
+\renewcommand{\footrulewidth}{2pt} % Optional
+\fancyfoot[C]{\textcolor{myblue}{\sffamily\small Page \thepage}}
+
+% Section styling
+\RequirePackage{titlesec}
+\titleformat{\section}
+{\color{myblue}\normalfont\Large\bfseries}
+{\thesection}{1em}{}
+
+\titleformat{\subsection}
+{\color{myblue}\normalfont\large\bfseries}
+{\thesubsection}{1em}{}
+
+% Paragraph spacing
+\setstretch{1.1}
+
+% Shaded environments
+\tcbset{
+	examplebox/.style={
+			colback=mybluelight,
+			colframe=myblue,
+			fonttitle=\bfseries,
+			boxrule=0.8pt,
+			arc=2pt,
+			top=1mm,
+			bottom=1mm,
+			left=3mm,
+			right=3mm,
+		}
+}
+\newtcolorbox{example}[1][]{examplebox, adjusted title=#1}
+
+\RequirePackage{minted}
+
+\newtcblisting[auto counter,number within=section]{codeblock}[2]{ % #1 = language, #2 = Title
+	examplebox,
+	listing engine=minted,
+	minted language=#1,
+	title={Code Listing \thetcbcounter: #2},
+	listing only,
+	list entry={\protect\numberline{\thetcbcounter}#2},
+	minted options={
+			fontsize=\small,
+			baselinestretch=1.1,
+			style=xcode,
+			linenos=true,
+			numbersep=6pt,
+			frame=none,
+			framesep=2mm
+		}
+}

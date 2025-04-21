@@ -1,0 +1,28 @@
+\documentclass{article}
+\usepackage{kingfisher}
+
+\settitle{Example One}
+\setauthor{Mr. Soand So}
+\setdate{\today}
+
+\begin{document}
+
+\section{Limits and the tangent problem}
+
+Here is a sample paragraph introducing the document.
+
+\begin{example}[Completing the Square for $x^2 + 6x + 5$]
+	To complete the square:
+	\begin{align}
+		x^2 + 6x + 5
+		 & = x^2 + 6x + 9 - 9 - 4 \label{eq:prfsq} \\
+		 & = (x + 3)^2 - 13 \label{eq:factor}
+	\end{align}
+
+	In step~(\ref{eq:prfsq}), we halve 6 and square the answer to find the term that will produce a perfect square trinomial.
+	We add and subtract this value, 9, and complete the factorization in step~(\ref{eq:factor}).
+
+\end{example}
+
+\end{document}
+

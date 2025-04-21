@@ -1,0 +1,100 @@
+\documentclass{article}
+\usepackage{kingfisher}
+
+% Used for nice tables:
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{siunitx}
+
+% Optional Font
+\RequirePackage{unicode-math}
+\RequirePackage{fontspec}
+\setmainfont{TeX Gyre Pagella}
+\setmathfont{TeX Gyre Pagella Math}
+
+\settitle{Example One}
+\setauthor{Mr. Soand So}
+\setdate{\today}
+
+% Question counter
+\newcounter{qscount}
+
+% Question environment
+\newenvironment{qs}{
+  \refstepcounter{qscount}
+  \par\medskip
+  \noindent\textbf{Question~\theqscount.}~
+}{\par\medskip}
+
+\begin{document}
+
+\section{Limits and the tangent problem}
+
+Here is a sample paragraph introducing the document.
+
+\begin{example}[Completing the Square for $x^2 + 6x + 5$]
+	To complete the square:
+	\begin{align}
+		x^2 + 6x + 5
+		 & = x^2 + 6x + 9 - 9 - 4 \label{eq:prfsq} \\
+		 & = (x + 3)^2 - 13 \label{eq:factor}
+	\end{align}
+
+	In step~(\ref{eq:prfsq}), we halve 6 and square the answer to find the term that will produce a perfect square trinomial.
+	We add and subtract this value, 9, and complete the factorization in step~(\ref{eq:factor}).
+
+\end{example}
+
+\subsubsection*{More Details}
+
+A subsection for more math.
+
+\[
+	\int_0^\infty e^{-x^2} dx = \frac{\sqrt{\pi}}{2}
+\]
+
+A nice table:
+
+% Requires float, booktabs, and siunitx packages
+\begin{table}[htbp]
+	\centering
+	\caption{Comparison of Algorithm Performance on Sample Dataset}
+	\label{tab:algo-performance}
+	\vspace{5pt}
+	\begin{tabular}{@{} l S[table-format=2.1] S[table-format=1.2] @{}}
+		\toprule
+		Algorithm      & {Accuracy (\%)} & {Runtime (s)} \\
+		\midrule
+		Decision Tree  & 85.3            & 0.12          \\
+		Random Forest  & 92.1            & 0.45          \\
+		SVM            & 89.7            & 0.78          \\
+		Neural Network & 94.5            & 1.34          \\
+		k-NN           & 88.2            & 0.59          \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+\begin{qs}
+	What is the value of the derivative of $f(x) = x^2$ at $x = 3$?
+\end{qs}
+
+\subsection{Simple Python Function}
+
+Here is an example of a Python function:
+
+\begin{codeblock}{python}{Python example}
+	def fibonacci(n):
+	a, b = 0, 1
+	for _ in range(n):
+	print(a)
+	a, b = b, a + b
+\end{codeblock}
+
+\subsection{Question Environment}
+
+\begin{qs}
+	What is the value of the derivative of $f(x) = x^2$ at $x = 3$?
+\end{qs}
+
+\end{document}
+
