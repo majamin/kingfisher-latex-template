@@ -6,7 +6,7 @@ This work is based on the style of the _eisvogel_ [pandoc latex template](https:
 
 Check out `kingfisher.sty`. This is a work in progress!
 
-The **TeX Gyre Pagella** is used in this project.
+The **TeX Gyre Pagella** font is used in this project.
 Remove references to it if you do not have it installed.
 
 # Examples of usage
